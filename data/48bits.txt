@@ -1,0 +1,88 @@
+
+> tsid@0.1.0 test
+> npx jest
+
+  console.log
+    generating 10 ids (48 bits = 32 time bits + 16 random bits)
+    max amount of id digits: 15
+    
+    period supported by time component with milisecond precision: 0 years
+    period supported by time component with second precision: 136 years
+    period supported by time component with minute precision: 8166 years
+    period supported by time component with hour precision: 489957 years
+    
+    chance of at least one collision happening: 0.0686%
+    average amount of collisions: 0.0
+
+      at src/tsid.test.ts:94:12
+
+  console.log
+    generating 100 ids (48 bits = 32 time bits + 16 random bits)
+    max amount of id digits: 15
+    
+    period supported by time component with milisecond precision: 0 years
+    period supported by time component with second precision: 136 years
+    period supported by time component with minute precision: 8166 years
+    period supported by time component with hour precision: 489957 years
+    
+    chance of at least one collision happening: 7.2749%
+    average amount of collisions: 0.2
+
+      at src/tsid.test.ts:94:12
+
+  console.log
+    generating 1000 ids (48 bits = 32 time bits + 16 random bits)
+    max amount of id digits: 15
+    
+    period supported by time component with milisecond precision: 0 years
+    period supported by time component with second precision: 136 years
+    period supported by time component with minute precision: 8166 years
+    period supported by time component with hour precision: 489957 years
+    
+    chance of at least one collision happening: 99.9510%
+    average amount of collisions: 17.3
+
+      at src/tsid.test.ts:94:12
+
+  console.log
+    generating 10000 ids (48 bits = 32 time bits + 16 random bits)
+    max amount of id digits: 15
+    
+    period supported by time component with milisecond precision: 0 years
+    period supported by time component with second precision: 136 years
+    period supported by time component with minute precision: 8166 years
+    period supported by time component with hour precision: 489957 years
+    
+    chance of at least one collision happening: 100.0000%
+    average amount of collisions: 1540.2
+
+      at src/tsid.test.ts:94:12
+
+  console.log
+    generating 100000 ids (48 bits = 32 time bits + 16 random bits)
+    max amount of id digits: 15
+    
+    period supported by time component with milisecond precision: 0 years
+    period supported by time component with second precision: 136 years
+    period supported by time component with minute precision: 8166 years
+    period supported by time component with hour precision: 489957 years
+    
+    chance of at least one collision happening: 100.0000%
+    average amount of collisions: 62176.6
+
+      at src/tsid.test.ts:94:12
+
+  console.log
+    generating 1000000 ids (48 bits = 32 time bits + 16 random bits)
+    max amount of id digits: 15
+    
+    period supported by time component with milisecond precision: 0 years
+    period supported by time component with second precision: 136 years
+    period supported by time component with minute precision: 8166 years
+    period supported by time component with hour precision: 489957 years
+    
+    chance of at least one collision happening: 100.0000%
+    average amount of collisions: 936999.1
+
+      at src/tsid.test.ts:94:12
+
