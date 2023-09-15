@@ -1,6 +1,6 @@
 import { randomBytes } from "crypto";
 
-class Tsid {
+export class Tsid {
 	static generate(
 		idSizeInBits: number = 64,
 		timeComponentSizeInBits: number = 42,
@@ -36,11 +36,14 @@ class Tsid {
 		timeComponent: number,
 		randomComponent: bigint,
 	): bigint {
-		const randomComponentMask = ~BigInt(~BigInt(0) << BigInt(randomComponentSizeInBits));
+		const randomComponentMask = Tsid.getRandomComponentMask(randomComponentSizeInBits);
 		const id =
 			(BigInt(timeComponent) << BigInt(randomComponentSizeInBits)) | (randomComponent & randomComponentMask);
 		return id;
 	}
-}
 
-console.log(Tsid.generate());
+	private static getRandomComponentMask(randomComponentSizeInBits: number): bigint {
+		const mask = ~BigInt(~BigInt(0) << BigInt(randomComponentSizeInBits));
+		return mask;
+	}
+}
