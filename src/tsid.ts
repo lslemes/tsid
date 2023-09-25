@@ -27,12 +27,12 @@ export class TsidGenerator {
 
 	generate(): string {
 		const bytes = randomBytes(this.idSizeInBits / 8);
-		TsidGenerator.prettyPrintBytes(bytes);
+		// TsidGenerator.prettyPrintBytes(bytes);
 		const timestamp = this.getTimestamp();
-		console.log(`timestamp: ${timestamp} miliseconds since ${this.epoch}\n`);
+		// console.log(`timestamp: ${timestamp} miliseconds since ${this.epoch}\n`);
 		const randomValue = this.getRandomValueFromBytes(bytes);
 		const id = this.composeId(timestamp, randomValue);
-		console.log("id :>> ", id);
+		// console.log("id :>> ", id);
 
 		return id.toString();
 	}
@@ -45,12 +45,12 @@ export class TsidGenerator {
 		let value = BigInt(0);
 		for (let i = 0; i < bytes.length; i++) {
 			const shiftedByteValue = BigInt(bytes[i]) << BigInt(bytes.length * 8 - 8 * (i + 1));
-			console.log(this.getPrettyBinaryString(value));
-			console.log(this.getPrettyBinaryString(shiftedByteValue));
-			console.log(`${this.getPrettyResultLine()} OR`);
+			// console.log(this.getPrettyBinaryString(value));
+			// console.log(this.getPrettyBinaryString(shiftedByteValue));
+			// console.log(`${this.getPrettyResultLine()} OR`);
 			value |= shiftedByteValue;
-			console.log(this.getPrettyBinaryString(value));
-			console.log();
+			// console.log(this.getPrettyBinaryString(value));
+			// console.log();
 		}
 		return value;
 	}
@@ -59,48 +59,48 @@ export class TsidGenerator {
 		const timeComponentMask = this.getTimeComponentMask();
 		const randomComponentMask = this.getRandomComponentMask();
 
-		console.log("timeComponentMask :>>\t", this.getPrettyBinaryString(timeComponentMask));
-		console.log("randomComponentMask :>>\t", this.getPrettyBinaryString(randomComponentMask));
-		console.log();
+		// console.log("timeComponentMask :>>\t", this.getPrettyBinaryString(timeComponentMask));
+		// console.log("randomComponentMask :>>\t", this.getPrettyBinaryString(randomComponentMask));
+		// console.log();
 
 		const timeComponent = BigInt(BigInt(timestamp) << BigInt(this.randomComponentSizeInBits)) & timeComponentMask;
 		const randomComponent = randomValue & randomComponentMask;
 
 		const id = timeComponent | randomComponent;
 
-		console.log("timeComponent");
-		console.log(timestamp.toString(2));
-		console.log("<<", this.randomComponentSizeInBits);
-		const shiftedTimestampBinaryString = (BigInt(timestamp) << BigInt(this.randomComponentSizeInBits)).toString(2);
-		console.log(
-			shiftedTimestampBinaryString.padStart(
-				Math.max(shiftedTimestampBinaryString.length, this.idSizeInBits),
-				"0",
-			),
-		);
-		console.log(
-			timeComponentMask
-				.toString(2)
-				.padStart(Math.max(shiftedTimestampBinaryString.length, this.idSizeInBits), "0"),
-		);
-		console.log(`AND`);
-		console.log(
-			timeComponent.toString(2).padStart(Math.max(shiftedTimestampBinaryString.length, this.idSizeInBits), "0"),
-		);
-		console.log(this.getPrettyResultLine());
-		console.log(`${this.getPrettyBinaryString(timeComponent)}\n`);
+		// console.log("timeComponent");
+		// console.log(timestamp.toString(2));
+		// console.log("<<", this.randomComponentSizeInBits);
+		// const shiftedTimestampBinaryString = (BigInt(timestamp) << BigInt(this.randomComponentSizeInBits)).toString(2);
+		// console.log(
+		// 	shiftedTimestampBinaryString.padStart(
+		// 		Math.max(shiftedTimestampBinaryString.length, this.idSizeInBits),
+		// 		"0",
+		// 	),
+		// );
+		// console.log(
+		// 	timeComponentMask
+		// 		.toString(2)
+		// 		.padStart(Math.max(shiftedTimestampBinaryString.length, this.idSizeInBits), "0"),
+		// );
+		// console.log(`AND`);
+		// console.log(
+		// 	timeComponent.toString(2).padStart(Math.max(shiftedTimestampBinaryString.length, this.idSizeInBits), "0"),
+		// );
+		// console.log(this.getPrettyResultLine());
+		// console.log(`${this.getPrettyBinaryString(timeComponent)}\n`);
 
-		console.log("randomComponent");
-		console.log(this.getPrettyBinaryString(randomValue));
-		console.log(this.getPrettyBinaryString(randomComponentMask));
-		console.log(`${this.getPrettyResultLine()} AND`);
-		console.log(`${this.getPrettyBinaryString(randomComponent)}\n`);
+		// console.log("randomComponent");
+		// console.log(this.getPrettyBinaryString(randomValue));
+		// console.log(this.getPrettyBinaryString(randomComponentMask));
+		// console.log(`${this.getPrettyResultLine()} AND`);
+		// console.log(`${this.getPrettyBinaryString(randomComponent)}\n`);
 
-		console.log("id");
-		console.log(this.getPrettyBinaryString(timeComponent));
-		console.log(this.getPrettyBinaryString(randomComponent));
-		console.log(`${this.getPrettyResultLine()} OR`);
-		console.log(`${this.getPrettyBinaryString(id)}\n`);
+		// console.log("id");
+		// console.log(this.getPrettyBinaryString(timeComponent));
+		// console.log(this.getPrettyBinaryString(randomComponent));
+		// console.log(`${this.getPrettyResultLine()} OR`);
+		// console.log(`${this.getPrettyBinaryString(id)}\n`);
 
 		return id;
 	}
@@ -117,34 +117,34 @@ export class TsidGenerator {
 		return mask;
 	}
 
-	private static prettyPrintBytes(bytes: Buffer): void {
-		console.log("bytes :>> ", bytes);
-		for (let i = 0; i < bytes.length; i++) {
-			console.log(
-				`bytes[${i}]: ${bytes[i].toString(16).padStart(2, "0")} = ${bytes[i]
-					.toString()
-					.padStart(3, "0")} = ${bytes[i].toString(2).padStart(8, "0")}`,
-			);
-		}
-		console.log();
-	}
+	// private static prettyPrintBytes(bytes: Buffer): void {
+	// 	console.log("bytes :>> ", bytes);
+	// 	for (let i = 0; i < bytes.length; i++) {
+	// 		console.log(
+	// 			`bytes[${i}]: ${bytes[i].toString(16).padStart(2, "0")} = ${bytes[i]
+	// 				.toString()
+	// 				.padStart(3, "0")} = ${bytes[i].toString(2).padStart(8, "0")}`,
+	// 		);
+	// 	}
+	// 	console.log();
+	// }
 
-	private getPrettyBinaryString(value: bigint): string {
-		return `${value
-			.toString(2)
-			.padStart(this.idSizeInBits, "0")
-			.match(/.{1,8}/g)
-			?.join(" ")}`;
-	}
+	// private getPrettyBinaryString(value: bigint): string {
+	// 	return `${value
+	// 		.toString(2)
+	// 		.padStart(this.idSizeInBits, "0")
+	// 		.match(/.{1,8}/g)
+	// 		?.join(" ")}`;
+	// }
 
-	private getPrettyResultLine(): string {
-		let line = "";
-		for (let i = 0; i < this.idSizeInBits + (this.idSizeInBits / 8 - 1); i++) {
-			line += "-";
-		}
-		return line;
-	}
+	// private getPrettyResultLine(): string {
+	// 	let line = "";
+	// 	for (let i = 0; i < this.idSizeInBits + (this.idSizeInBits / 8 - 1); i++) {
+	// 		line += "-";
+	// 	}
+	// 	return line;
+	// }
 }
 
 const generator = new TsidGenerator(64, 42, 22);
-generator.generate();
+console.log(generator.generate());
