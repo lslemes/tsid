@@ -145,6 +145,3 @@ export class TsidGenerator {
 	// 	return line;
 	// }
 }
-
-const generator = new TsidGenerator(64, 42, 22);
-console.log(generator.generate());
